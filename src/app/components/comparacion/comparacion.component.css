@@ -1,0 +1,60 @@
+.comparacion{
+    display: flex;
+}
+
+header{
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 39px;
+    padding: 5px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.aciertos{
+    color: yellow;
+    font-weight: bold;
+    font-size: 30px;
+    justify-content: left;
+}
+
+h1{
+    color: white;
+    font-weight: bold;
+    text-align: center !important;
+}
+
+.jugador{
+    text-align: left;
+    margin-top: 400px;
+    margin-left: 200px;
+    font-weight: bold;
+    font-size: 35px;
+    color: yellow;
+}
+
+input{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    background-color: orange;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.icons{
+    position: absolute;
+    top: 450px;
+    left: 895px;
+}
+
+.escudos{
+    width: 80px;
+    height: 80px;
+    margin-bottom: -30px;
+}

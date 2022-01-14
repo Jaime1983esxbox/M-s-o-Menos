@@ -1,0 +1,27 @@
+<div class="container">
+    <header>
+        <p class="aciertos">Récord: {{recordAciertos}}</p>
+        <h1>Creado por Jaime Castiblanque</h1>
+        <p class="aciertos">Total de aciertos: {{contadorAciertos}}</p>
+    </header>
+    <div class="comparacion">
+        <div [(ngModel)]="jugadorSeleccionado1" ngDefaultControl style="background-image: url({{jugadorSeleccionado1.imagen}}); width: 960px; height: 882px;">
+            <p class="jugador">Nombre: {{jugadorSeleccionado1.nombre}} <br> Nacionalidad: {{jugadorSeleccionado1.pais}} <br>
+                Cuesta: {{jugadorSeleccionado1.precio}}&nbsp;millones € <br> Equipo: <img class="escudos" src="{{jugadorSeleccionado1.equipo}}">
+            </p>
+        </div>
+        <div class="icons" *ngIf="mostrarVs">
+            <img src="./assets/vs.png">
+        </div>
+        <div class="icons" *ngIf="mostrarAcierto">
+            <img src="./assets/correct.png">
+        </div>
+        <div [(ngModel)]="jugadorSeleccionado2" ngDefaultControl style="background-image: url({{jugadorSeleccionado2.imagen}}); width: 960px; height: 882px;">
+            <p class="jugador">Nombre: {{jugadorSeleccionado2.nombre}} <br> Nacionalidad: {{jugadorSeleccionado2.pais}} <br>
+                Equipo: <img class="escudos" src="{{jugadorSeleccionado2.equipo}}"> <br><br>
+                Cuesta <br> <input type="submit" value="Más" (click)="comparacionJugadoresMas()">
+                &nbsp;<input type="submit" value="Menos" (click)="comparacionJugadoresMenos()"> <br> Millones
+            </p>
+        </div>
+    </div>
+</div>

@@ -22,7 +22,7 @@ export class ResultadoComponent implements OnInit {
       this.contadorAciertos = 0;
     }
 
-    if(this.contadorAciertos == 20){
+    if(this.contadorAciertos == 41){
       this.derrota = false;
       this.victoria = true;
     }

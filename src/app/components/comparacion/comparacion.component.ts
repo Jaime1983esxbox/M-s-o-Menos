@@ -44,7 +44,28 @@ export class ComparacionComponent implements OnInit {
       {nombre: 'Alexander-Arnold', pais: 'Inglaterra', equipo: './assets/liverpool.png', precio: 80, imagen: './assets/AlexanderArnold.jpg'},
       {nombre: 'Jack Grealish', pais: 'Inglaterra', equipo: './assets/city.jpg', precio: 80, imagen: './assets/Grealish.jpg'},
       {nombre: 'Sadio Mané', pais: 'Senegal', equipo: './assets/liverpool.png', precio: 80, imagen: './assets/Mané.jpg'},
-      {nombre: 'Heung-Min Son', pais: 'Corea del Sur', equipo: './assets/hotspur.png', precio: 80, imagen: './assets/Son.jpg'}
+      {nombre: 'Heung-Min Son', pais: 'Corea del Sur', equipo: './assets/hotspur.png', precio: 80, imagen: './assets/Son.jpg'},
+      {nombre: 'Cristiano Ronaldo', pais: 'Portugal', equipo: './assets/united.png', precio: 35, imagen: './assets/cristiano.jpg'},
+      {nombre: 'Lionel Mesi', pais: 'Argentina', equipo: './assets/psg.png', precio: 60, imagen: './assets/messi.jpg'},
+      {nombre: 'Robert Lewandowski', pais: 'Polonia', equipo: './assets/bayern.png', precio: 50, imagen: './assets/lewandowski.jpg'},
+      {nombre: 'Karim Benzema', pais: 'Francia', equipo: './assets/realmadrid.png', precio: 25, imagen: './assets/benzema.jpg'},
+      {nombre: 'Thibaut Courtouis', pais: 'Bélgica', equipo: './assets/realmadrid.png', precio: 65, imagen: './assets/courtouis.jpg'},
+      {nombre: 'Fede Valverde', pais: 'Uruguay', equipo: './assets/realmadrid.png', precio: 65, imagen: './assets/fede.jpg'},
+      {nombre: 'Joao Félix', pais: 'Portugal', equipo: './assets/atleti.png', precio: 60, imagen: './assets/joaofelix.jpg'},
+      {nombre: 'Luka Modric', pais: 'Croacia', equipo: './assets/realmadrid.png', precio: 10, imagen: './assets/modric.jpg'},
+      {nombre: 'Toni Kroos', pais: 'Alemania', equipo: './assets/realmadrid.png', precio: 25, imagen: './assets/kroos.jpeg'},
+      {nombre: 'Eder Militao', pais: 'Brasil', equipo: './assets/realmadrid.png', precio: 60, imagen: './assets/militao.jpg'},
+      {nombre: 'David Alaba', pais: 'Austria', equipo: './assets/realmadrid.png', precio: 55, imagen: './assets/alaba.jpeg'},
+      {nombre: 'Alphonso Davies', pais: 'Canadá', equipo: './assets/bayern.png', precio: 70, imagen: './assets/davies.jpg'},
+      {nombre: 'Dusan Vlahovic', pais: 'Serbia', equipo: './assets/fiorentina.png', precio: 70, imagen: './assets/vlahovic.jpg'},
+      {nombre: 'Federico Chiesa', pais: 'Italia', equipo: './assets/juventus.png', precio: 70, imagen: './assets/chiesa.jpeg'},
+      {nombre: 'Leroy Sané', pais: 'Alemania', equipo: './assets/bayern.png', precio: 70, imagen: './assets/sane.jpg'},
+      {nombre: 'Ngolo Kanté', pais: 'Francia', equipo: './assets/chelsea.png', precio: 50, imagen: './assets/kante.jpg'},
+      {nombre: 'Gianluigi Donnarumma', pais: 'Italia', equipo: './assets/psg.png', precio: 65, imagen: './assets/donnarumma.jpg'},
+      {nombre: 'Ansu Fati', pais: 'España', equipo: './assets/barcelona.png', precio: 60, imagen: './assets/ansu.jpg'},
+      {nombre: 'Marcos Llorente', pais: 'España', equipo: './assets/atleti.png', precio: 60, imagen: './assets/llorente.jpg'},
+      {nombre: 'Virgil Van Dijk', pais: 'Países Bajos', equipo: './assets/liverpool.png', precio: 55, imagen: './assets/virgil.jpg'},
+      {nombre: 'Sergio Ramos', pais: 'España', equipo: './assets/psg.png', precio: 8, imagen: './assets/ramos.jpg'}
     ]
 
     this.jugadoresYaSeleccionados = Object.assign([], this.jugadores);
@@ -74,7 +95,7 @@ export class ComparacionComponent implements OnInit {
       this.jugadoresPosibleComparacion = this.seleccionarJugadorComparar(this.jugadorSeleccionado1);
       this.borrarJugadorSeleccionado(this.jugadorSeleccionado1);
       this.jugadorSeleccionado2 = this.jugadoresPosibleComparacion[Math.floor(Math.random() * this.jugadoresPosibleComparacion.length)];
-      if(this.contadorAciertos == 20){
+      if(!this.jugadorSeleccionado2){
         this.route.navigateByUrl('resultado');
       }
     }else{
@@ -96,7 +117,7 @@ export class ComparacionComponent implements OnInit {
       this.jugadoresPosibleComparacion = this.seleccionarJugadorComparar(this.jugadorSeleccionado1);
       this.borrarJugadorSeleccionado(this.jugadorSeleccionado1);
       this.jugadorSeleccionado2 = this.jugadoresPosibleComparacion[Math.floor(Math.random() * this.jugadoresPosibleComparacion.length)];
-      if(this.contadorAciertos == 20){
+      if(!this.jugadorSeleccionado2){
         this.route.navigateByUrl('resultado');
       }
     }else{

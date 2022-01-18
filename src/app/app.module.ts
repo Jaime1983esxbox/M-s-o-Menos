@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { ComparacionComponent } from './components/comparacion/comparacion.component';
 import { FormsModule } from "@angular/forms";
 import { ResultadoComponent } from './components/resultado/resultado.component';
+import { InicioComponent } from './components/inicio/inicio.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComparacionComponent,
-    ResultadoComponent
+    ResultadoComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,11 +1,11 @@
 <div class="container">
-    <div *ngIf="derrota">
+    <div *ngIf="!isRecord">
         <span>Has fallado</span>
         <img src="./assets/triste.png" alt=""><br><br>
         <span>Tu resultado ha sido de {{contadorAciertos}} aciertos</span><br><br>
         <input type="submit" value="Jugar de Nuevo" (click)="volver()">
     </div>
-    <div *ngIf="victoria">
+    <div *ngIf="isRecord">
         <span>¡Enhorabuena! Has finalizado el juego</span>
         <img src="./assets/sonrisa.png" alt=""><br><br>
         <input type="submit" value="Jugar de Nuevo" (click)="volver()">

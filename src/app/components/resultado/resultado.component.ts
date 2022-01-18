@@ -10,29 +10,49 @@ import { ComunicacionService } from 'src/app/services/comunicacion.service';
 export class ResultadoComponent implements OnInit {
 
   contadorAciertos: number = 0;
-  recordAciertos: number = 0;
-  derrota: boolean = true;
-  victoria: boolean = false;
+  recordAciertosPrecio: number = 0;
+  recordAciertosEdad: number = 0;
+  isRecord: boolean = false;
 
   constructor(private comunicacionService: ComunicacionService, private router: Router) { }
 
   ngOnInit(): void {
+
+
     this.contadorAciertos = this.comunicacionService.guardarContador();
+    
     if(this.contadorAciertos < 1){
       this.contadorAciertos = 0;
     }
 
     if(this.contadorAciertos == 41){
-      this.derrota = false;
-      this.victoria = true;
+      this.isRecord = true;
+    }else{
+      this.isRecord = false;
+    }
+
+    this.contadorAciertos = this.comunicacionService.guardarContador();
+
+    if(this.contadorAciertos < 1){
+      this.contadorAciertos = 0;
+    }
+
+    if(this.contadorAciertos == 41){
+      this.isRecord = true;
+    }else{
+      this.isRecord = false;
     }
   }
 
   volver(){
-    if(this.contadorAciertos > this.recordAciertos){
-      this.contadorAciertos = this.comunicacionService.guardarRecord();
+    if(this.contadorAciertos > this.recordAciertosPrecio){
+      this.contadorAciertos = this.comunicacionService.guardarRecordPrecio();
     }
-    localStorage.removeItem('contadorAciertos');
+    if(this.contadorAciertos > this.recordAciertosEdad){
+      this.contadorAciertos = this.comunicacionService.guardarRecordEdad();
+    }
+    localStorage.removeItem('contadorAciertosPrecio');
+    localStorage.removeItem('contadorAciertosEdad');
     this.router.navigateByUrl('');
   }
 

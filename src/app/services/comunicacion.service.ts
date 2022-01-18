@@ -9,15 +9,18 @@ export class ComunicacionService {
   mensajeSubjectAciertos = new Subject<number>();
   contadorAciertos: number = 0;
 
-  mensajeSubjectRecord = new Subject<number>();
-  recordAciertos: number = 0;
+  mensajeSubjectRecordPrecio = new Subject<number>();
+  recordAciertosPrecio: number = 0;
+
+  mensajeSubjectRecordEdad = new Subject<number>();
+  recordAciertosEdad: number = 0;
 
   constructor() { }
 
-  crearContador(contador: number){
-    localStorage.setItem('contadorAciertos', JSON.stringify(contador));
-    this.mensajeSubjectAciertos.next(contador);
-    this.contadorAciertos = contador;
+  crearContador(contadorPrecio: number){
+    localStorage.setItem('contadorAciertos', JSON.stringify(contadorPrecio));
+    this.mensajeSubjectAciertos.next(contadorPrecio);
+    this.contadorAciertos = contadorPrecio;
   }
 
   guardarContador(): number{
@@ -26,15 +29,27 @@ export class ComunicacionService {
     return this.contadorAciertos;
   }
 
-  crearRecord(record: number){
-    localStorage.setItem('recordAciertos', JSON.stringify(record));
-    this.mensajeSubjectAciertos.next(record);
-    this.recordAciertos = record;
+  crearRecordPrecio(recordPrecio: number){
+    localStorage.setItem('recordAciertosPrecio', JSON.stringify(recordPrecio));
+    this.mensajeSubjectRecordPrecio.next(recordPrecio);
+    this.recordAciertosPrecio = recordPrecio;
   }
 
-  guardarRecord(): number{
-    let mensajeLocalStorage: any = localStorage.getItem('recordAciertos');
-    this.recordAciertos = mensajeLocalStorage;
-    return this.recordAciertos;
+  guardarRecordPrecio(): number{
+    let mensajeLocalStorage: any = localStorage.getItem('recordAciertosPrecio');
+    this.recordAciertosPrecio = mensajeLocalStorage;
+    return this.recordAciertosPrecio;
+  }
+
+  crearRecordEdad(recordEdad: number){
+    localStorage.setItem('recordAciertosEdad', JSON.stringify(recordEdad));
+    this.mensajeSubjectRecordEdad.next(recordEdad);
+    this.recordAciertosEdad = recordEdad;
+  }
+
+  guardarRecordEdad(): number{
+    let mensajeLocalStorage: any = localStorage.getItem('recordAciertosEdad');
+    this.recordAciertosEdad = mensajeLocalStorage;
+    return this.recordAciertosEdad;
   }
 }

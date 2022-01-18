@@ -1,4 +1,8 @@
-.comparacion{
+.precio{
+    display: flex;
+}
+
+.edad{
     display: flex;
 }
 
@@ -10,6 +14,11 @@ header{
     padding: 5px;
     padding-left: 30px;
     padding-right: 30px;
+}
+
+header input{
+    height: 40px;
+    margin-block: auto;
 }
 
 .aciertos{

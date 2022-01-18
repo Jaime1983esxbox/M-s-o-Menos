@@ -22,8 +22,7 @@ export class ComparacionComponent implements OnInit {
   recordAciertosEdad: number = 0;
   comparacionPrecio: boolean = false;
   comparacionEdad: boolean = false;
-  precio!: number;
-  edad!: number;
+  tipo!: string;
 
   constructor(private comunicacionService: ComunicacionService, private route: Router,
     private activatedRoute: ActivatedRoute) { }
@@ -31,8 +30,8 @@ export class ComparacionComponent implements OnInit {
   ngOnInit(): void {
 
     this.activatedRoute.queryParams.subscribe(params=>{
-      this.precio = params['precio'];
-      this.edad = params['edad'];
+      this.tipo = params['tipo'];
+      console.log(this.tipo);
     })
 
     this.jugadores = [

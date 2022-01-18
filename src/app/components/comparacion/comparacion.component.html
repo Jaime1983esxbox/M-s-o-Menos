@@ -1,5 +1,4 @@
-<div class="container" *ngIf="comparacionPrecio" [routerLink]="['comparacion/', precio]"
-routerLinkActive="router-link-active">
+<div class="container" *ngIf="tipo == 'precio'">
     <header>
         <p class="aciertos">Récord: {{recordAciertosPrecio}}</p>
         <input type="submit" value="Inicio" (click)="volver()">
@@ -29,8 +28,7 @@ routerLinkActive="router-link-active">
         </div>
     </div>
 </div>
-<div class="container" *ngIf="comparacionEdad" [routerLink]="['comparacion/', edad]"
-routerLinkActive="router-link-active">
+<div class="container" *ngIf="tipo == 'edad'">
     <header>
         <p class="aciertos">Récord: {{recordAciertosEdad}}</p>
         <input type="submit" value="Inicio" (click)="volver()">

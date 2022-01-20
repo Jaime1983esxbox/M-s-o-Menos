@@ -18,41 +18,27 @@ export class ResultadoComponent implements OnInit {
 
   ngOnInit(): void {
 
-
     this.contadorAciertos = this.comunicacionService.guardarContador();
-    
-    if(this.contadorAciertos < 1){
+
+    if (this.contadorAciertos < 1) {
       this.contadorAciertos = 0;
     }
 
-    if(this.contadorAciertos == 41){
+    if (this.contadorAciertos == 41) {
       this.isRecord = true;
-    }else{
-      this.isRecord = false;
-    }
-
-    this.contadorAciertos = this.comunicacionService.guardarContador();
-
-    if(this.contadorAciertos < 1){
-      this.contadorAciertos = 0;
-    }
-
-    if(this.contadorAciertos == 41){
-      this.isRecord = true;
-    }else{
+    } else {
       this.isRecord = false;
     }
   }
 
-  volver(){
-    if(this.contadorAciertos > this.recordAciertosPrecio){
+  volver() {
+    if (this.contadorAciertos > this.recordAciertosPrecio) {
       this.contadorAciertos = this.comunicacionService.guardarRecordPrecio();
     }
-    if(this.contadorAciertos > this.recordAciertosEdad){
+    if (this.contadorAciertos > this.recordAciertosEdad) {
       this.contadorAciertos = this.comunicacionService.guardarRecordEdad();
     }
-    localStorage.removeItem('contadorAciertosPrecio');
-    localStorage.removeItem('contadorAciertosEdad');
+    localStorage.removeItem('contadorAciertos');
     this.router.navigateByUrl('');
   }
 

@@ -7,6 +7,7 @@ import { ComparacionComponent } from './components/comparacion/comparacion.compo
 import { FormsModule } from "@angular/forms";
 import { ResultadoComponent } from './components/resultado/resultado.component';
 import { InicioComponent } from './components/inicio/inicio.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

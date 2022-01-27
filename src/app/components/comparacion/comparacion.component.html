@@ -1,16 +1,18 @@
 <div class="container" *ngIf="tipo == 'precio'">
     <header>
-        <p class="aciertos">Récord: {{recordAciertosPrecio}}</p>
-        <input type="submit" value="Inicio" (click)="volver()">
+        <span class="aciertos">Récord: {{recordAciertosPrecio}}</span>
+        <button class="inicio" mat-raised-button color="primary" type="submit" (click)="volver()">Inicio</button>
         <h1>Comparador por Precio</h1>
-        <p class="aciertos">Total de aciertos: {{contadorAciertos}}</p>
+        <span class="aciertos"><mat-icon>check_circle</mat-icon> {{contadorAciertos}}</span>
     </header>
     <div class="precio">
-        <div [(ngModel)]="jugadorSeleccionado1" ngDefaultControl style="background-image: url({{jugadorSeleccionado1.imagen}}); width: 960px; height: 882px;">
-            <p class="jugador">Nombre: {{jugadorSeleccionado1.nombre}} <br> Edad: {{jugadorSeleccionado1.edad}} <br>
-                Nacionalidad: {{jugadorSeleccionado1.pais}} <br>
-                Cuesta: {{jugadorSeleccionado1.precio}}&nbsp;millones € <br> Equipo: <img class="escudos" src="{{jugadorSeleccionado1.equipo}}">
-            </p>
+        <div [(ngModel)]="jugadorSeleccionado1" ngDefaultControl 
+        style="background-image: url({{jugadorSeleccionado1.imagen}}); width: 960px; height: 882px;">
+            <p class="nombre">Nombre: {{jugadorSeleccionado1.nombre}}</p>
+            <p>Edad: {{jugadorSeleccionado1.edad}}</p>
+            <p>Nacionalidad: {{jugadorSeleccionado1.pais}}</p>
+            <p>Cuesta: {{jugadorSeleccionado1.precio}}&nbsp;millones €</p>
+            <p>Equipo: <img class="escudos" src="{{jugadorSeleccionado1.equipo}}"></p> 
         </div>
         <div class="icons" *ngIf="mostrarVs">
             <img src="./assets/vs.png">
@@ -19,28 +21,33 @@
             <img src="./assets/correct.png">
         </div>
         <div [(ngModel)]="jugadorSeleccionado2" ngDefaultControl style="background-image: url({{jugadorSeleccionado2.imagen}}); width: 960px; height: 882px;">
-            <p class="jugador">Nombre: {{jugadorSeleccionado2.nombre}} <br> Edad: {{jugadorSeleccionado2.edad}} <br>
-                Nacionalidad: {{jugadorSeleccionado2.pais}} <br>
-                Equipo: <img class="escudos" src="{{jugadorSeleccionado2.equipo}}"> <br><br>
-                Cuesta <br> <input type="submit" value="Más" (click)="comparacionJugadoresMas()">
-                &nbsp;<input type="submit" value="Menos" (click)="comparacionJugadoresMenos()"> <br> Millones
-            </p>
+            <p class="nombre">Nombre: {{jugadorSeleccionado2.nombre}}</p>
+            <p>Edad: {{jugadorSeleccionado2.edad}}</p>
+            <p>Nacionalidad: {{jugadorSeleccionado2.pais}}</p>
+            <p>Equipo: <img class="escudos" src="{{jugadorSeleccionado2.equipo}}"></p>
+            <p> Cuesta</p> 
+            <div class="margenBotones">
+                <button mat-raised-button class="mas" type="submit" (click)="comparacionJugadoresMas()">Más</button>&nbsp;
+                <button mat-raised-button class="menos" type="submit" (click)="comparacionJugadoresMenos()">Menos</button>
+            </div>
+            <p>Millones</p>    
         </div>
     </div>
 </div>
 <div class="container" *ngIf="tipo == 'edad'">
     <header>
-        <p class="aciertos">Récord: {{recordAciertosEdad}}</p>
-        <input type="submit" value="Inicio" (click)="volver()">
+        <span class="aciertos">Récord: {{recordAciertosEdad}}</span>
+        <button class="inicio" mat-raised-button color="primary" type="submit" (click)="volver()">Inicio</button>
         <h1>Comparador por Edad</h1>
-        <p class="aciertos">Total de aciertos: {{contadorAciertos}}</p>
+        <span class="aciertos"><mat-icon>check_circle</mat-icon> {{contadorAciertos}}</span>
     </header>
     <div class="edad">
         <div [(ngModel)]="jugadorSeleccionado1" ngDefaultControl style="background-image: url({{jugadorSeleccionado1.imagen}}); width: 960px; height: 882px;">
-            <p class="jugador">Nombre: {{jugadorSeleccionado1.nombre}} <br> Edad: {{jugadorSeleccionado1.edad}} <br>
-                Nacionalidad: {{jugadorSeleccionado1.pais}} <br>
-                Cuesta: {{jugadorSeleccionado1.precio}}&nbsp;millones € <br> Equipo: <img class="escudos" src="{{jugadorSeleccionado1.equipo}}">
-            </p>
+            <p class="nombre">Nombre: {{jugadorSeleccionado1.nombre}}</p>
+            <p>Edad: {{jugadorSeleccionado1.edad}}</p>
+            <p>Nacionalidad: {{jugadorSeleccionado1.pais}}</p>
+            <p>Cuesta: {{jugadorSeleccionado1.precio}}&nbsp;millones €</p>
+            <p>Equipo: <img class="escudos" src="{{jugadorSeleccionado1.equipo}}"></p> 
         </div>
         <div class="icons" *ngIf="mostrarVs">
             <img src="./assets/vs.png">
@@ -49,12 +56,16 @@
             <img src="./assets/correct.png">
         </div>
         <div [(ngModel)]="jugadorSeleccionado2" ngDefaultControl style="background-image: url({{jugadorSeleccionado2.imagen}}); width: 960px; height: 882px;">
-            <p class="jugador">Nombre: {{jugadorSeleccionado2.nombre}} <br> Nacionalidad: {{jugadorSeleccionado2.pais}} <br>
-                Cuesta: {{jugadorSeleccionado2.precio}}&nbsp;millones € <br>
-                Equipo: <img class="escudos" src="{{jugadorSeleccionado2.equipo}}"> <br><br>
-                Tiene <br> <input type="submit" value="Más" (click)="comparacionJugadoresMas()">
-                &nbsp;<input type="submit" value="Menos" (click)="comparacionJugadoresMenos()"> <br> Años
-            </p>
+            <p class="nombre">Nombre: {{jugadorSeleccionado2.nombre}}</p>
+            <p>Nacionalidad: {{jugadorSeleccionado2.pais}}</p>
+            <p>Cuesta: {{jugadorSeleccionado2.precio}}&nbsp;millones €</p>
+            <p>Equipo: <img class="escudos" src="{{jugadorSeleccionado2.equipo}}"></p>
+            <p>Tiene</p>
+            <div class="margenBotones">
+                <button mat-raised-button class="mas" type="submit" (click)="comparacionJugadoresMas()">Más</button>&nbsp;
+                <button mat-raised-button class="menos" type="submit" (click)="comparacionJugadoresMenos()">Menos</button>
+            </div>
+            <p>Años</p>    
         </div>
     </div>
 </div>    

@@ -1,5 +1,9 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
+import { map, catchError } from 'rxjs/operators';
+import { Ciudad } from '../models/ciudad';
+import { Pais } from '../models/pais';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +19,47 @@ export class ComunicacionService {
   mensajeSubjectRecordEdad = new Subject<number>();
   recordAciertosEdad: number = 0;
 
-  constructor() { }
+  private selectedCountry: BehaviorSubject<Pais>;
+  public observableSelectedCountry: Observable<Pais>;
+
+  constructor(private http: HttpClient) {
+    let paisSeleccionado: any = localStorage.getItem('selectedCountry');
+    this.selectedCountry = new BehaviorSubject<Pais>(JSON.parse(paisSeleccionado));
+    this.observableSelectedCountry = this.selectedCountry.asObservable();
+  }
+
+  recuperarPaisesYCiudades(): Observable<any>{
+    return this.http.get<any>('https://countriesnow.space/api/v0.1/countries')
+    .pipe(map(response => {
+      let paises: Pais[] = [];
+      response.data.forEach((pais: any) => {
+        let paisGuardado = new Pais();
+        paisGuardado.name = pais.country;
+        pais.cities.forEach((ciudad: any) => {
+          let ciudadGuardada = new Ciudad();
+          ciudadGuardada.name = ciudad;
+          paisGuardado.ciudades.push(ciudadGuardada);
+        });
+        paises.push(paisGuardado);
+      })
+      return paises;
+    }),
+    catchError((err:HttpErrorResponse) => {
+      console.error(err);
+      return throwError(err);
+    }));
+  }
+
+  changeSelectedCountry(pais: Pais) {
+    localStorage.setItem("selectedCountry", JSON.stringify(pais));
+    this.selectedCountry.next(pais);
+  }
+
+  consultCountry(): Pais{
+    let paisSeleccionado: any = (localStorage.getItem('selectedCountry'));
+    let pais = JSON.parse(paisSeleccionado);
+    return pais;
+  }
 
   crearContador(contadorPrecio: number){
     localStorage.setItem('contadorAciertos', JSON.stringify(contadorPrecio));

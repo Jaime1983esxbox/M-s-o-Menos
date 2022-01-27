@@ -39,7 +39,7 @@ export class ResultadoComponent implements OnInit {
       this.contadorAciertos = this.comunicacionService.guardarRecordEdad();
     }
     localStorage.removeItem('contadorAciertos');
-    this.router.navigateByUrl('');
+    this.router.navigateByUrl('inicio');
   }
 
 }

@@ -1,6 +1,77 @@
-<div class="container">
-    <h1>BIENVENIDO AL QUIZ DE MÁS O MENOS DEL FÚTBOL</h1>
-    <p>¿Qué prefieres comparar?</p><br>
-    <input type="submit" value="Precio" (click)="compararPrecio()">
-    <input type="submit" value="Edad" (click)="compararEdad()">
+<div class="quiz" *ngIf="tipo == 'inicio'">
+    <img class="logo" src="./assets/logo.png">
+    <h1>BIENVENIDO AL QUIZ DEL FÚTBOL</h1>
+    <button mat-raised-button color="primary" value="Volver" (click)="volver()">Volver</button>
+    <p>¿Qué prefieres comparar?</p>
+    <button mat-raised-button color="primary" value="Precio" (click)="compararPrecio()">Precio</button>
+    <button mat-raised-button color="primary" value="Edad" (click)="compararEdad()">Edad</button><br>
+    <div class="logos">
+        <img class="dinero" src="./assets/dinero.png">
+        <img class="edad" src="./assets/edad.png">
+    </div>
+</div>
+
+<div class="formulario" *ngIf="tipo == 'registro'">
+    <h1>FORMULARIO REGISTRO</h1>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input [formControl]="nombre" required matInput>
+        <mat-error *ngIf="nombre.invalid">{{getErrorNombre()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Apellidos</mat-label>
+        <input [formControl]="apellidos" required matInput>
+        <mat-error *ngIf="apellidos.invalid">{{getErrorApellidos()}}</mat-error>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input required matInput placeholder="pat@example.com" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field class="ejemplo-ancho-completo" apariencia="rellenar" > 
+        <mat-label>Fecha de Nacimiento</mat-label> 
+        <input required readonly matInput [formControl]="fechaNacimiento" [min]="minDate" [max]="maxDate" [matDatepicker]="selector"> 
+        <mat-error *ngIf="fechaNacimiento.invalid">{{getErrorFechaNacimiento()}}</mat-error>
+        <mat-datepicker-toggle matSuffix [for]="selector"></mat-datepicker-toggle> 
+        <mat-datepicker #selector> </mat-datepicker> 
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>Usuario</mat-label>
+        <input required matInput [formControl]="usuario" maxlength="15" minLength="5">
+        <mat-error *ngIf="usuario.invalid">{{getErrorUsuario()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Password</mat-label>
+        <input required matInput [formControl]="password" maxlength="15" minLength="8" [type]="hide ? 'password' : 'text'">
+        <mat-error *ngIf="password.invalid">{{getErrorPassword()}}</mat-error>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input [formControl]="dniValidator" matInput [(ngModel)]="dni" (blur)="letraDni(dni)" pattern="[0-9]{8}[A-Za-z]{1}" maxlength="9" minlength="8" required>
+        <mat-error *ngIf="dniValidator.invalid">{{getErrorDni()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Dirección</mat-label>
+        <input [formControl]="direccion" required matInput>
+        <mat-error *ngIf="direccion.invalid">{{getErrorDireccion()}}</mat-error>
+    </mat-form-field><br>
+    <mat-form-field appearance="fill">   
+        <mat-label>País</mat-label>
+        <mat-select [formControl]="paisValidator" required>
+            <mat-option value="one" (click)="getCities(pais)" *ngFor="let pais of paises">{{pais.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="paisValidator.invalid">{{getErrorPais()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">   
+        <mat-label>Ciudad</mat-label>
+        <mat-select [formControl]="ciudad" required>
+            <mat-option value="one" *ngFor="let ciudad of ciudades">{{ciudad.name}}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="ciudad.invalid">{{getErrorCiudad()}}</mat-error>
+    </mat-form-field><br>
+    <button mat-raised-button color="primary" (click)="crear()">Crear</button>
+    <button mat-raised-button color="primary" (click)="volver()">Volver</button>
 </div>

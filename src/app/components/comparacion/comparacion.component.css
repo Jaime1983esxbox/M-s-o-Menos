@@ -6,6 +6,15 @@
     display: flex;
 }
 
+.nombre{
+    margin-top: 300px;
+}
+
+.inicio{
+    margin-top: 0px;
+    height: 45px;
+}
+
 header{
     height: 45px;
     display: flex;
@@ -21,39 +30,50 @@ header input{
     margin-block: auto;
 }
 
+mat-icon{
+    font-size: 35px;
+    margin-right: 20px;
+}
+
 .aciertos{
-    color: yellow;
+    color: #F11D34;
     font-weight: bold;
     font-size: 30px;
-    justify-content: left;
+    display: flex;
+    margin-top: 5px;
 }
 
 h1{
-    color: white;
+    color: #F11D34;
     font-weight: bold;
+    font-size: 30px;
+    margin-top: 5px;
     text-align: center !important;
 }
 
-.jugador{
+p{
     text-align: left;
-    margin-top: 400px;
+    padding: 10px;
     margin-left: 200px;
     font-weight: bold;
-    font-size: 35px;
+    font-size: 30px;
     color: yellow;
 }
 
-input{
+button{
     margin-top: 15px;
     margin-bottom: 15px;
-    width: 100px;
+    margin-left: 10px;
+    width: 120px;
     height: 50px;
     border: none;
-    background-color: orange;
-    color: white;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
+}
+
+.margenBotones{
+    margin-left: 200px;
 }
 
 .icons{
@@ -66,4 +86,14 @@ input{
     width: 80px;
     height: 80px;
     margin-bottom: -30px;
+}
+
+.mas{
+    background-color: #43CA5A;
+    color: white;
+}
+
+.menos{
+    background-color: #F11D34;
+    color: white;
 }

@@ -137,7 +137,7 @@ export class ComparacionComponent implements OnInit {
   volver() {
     localStorage.removeItem('comparadorPrecio');
     localStorage.removeItem('comparadorEdad');
-    this.route.navigateByUrl('');
+    this.route.navigateByUrl('inicio');
   }
 
   private procesarAcierto() {

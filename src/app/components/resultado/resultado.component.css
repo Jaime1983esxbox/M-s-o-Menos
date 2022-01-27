@@ -11,18 +11,15 @@ img{
 }
 
 span{
-    color: white;
+    color: #F11D34;
     font-weight: bold;
     font-size: 35px;
 }
 
-input{
-    width: 165px;
+button{
+    width: 200px;
     height: 60px;
     border: none;
-    background-color: orange;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
+    font-size: 25px;
     cursor: pointer;
 }

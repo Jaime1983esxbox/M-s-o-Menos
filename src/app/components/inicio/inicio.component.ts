@@ -32,6 +32,8 @@ export class InicioComponent implements OnInit {
   maxDate!: Date;
   dni!: any;
   letra!: string;
+  nivel!: string;
+  opciones = false;
 
   constructor(private comunicacionService: ComunicacionService,  
     private activatedRoute: ActivatedRoute, private router: Router,) {
@@ -57,6 +59,8 @@ export class InicioComponent implements OnInit {
         this.ciudades = this.pais.ciudades;
       }
     )
+
+    this.nivel = 'Nivel';
   }
 
   getCities(pais: Pais){
@@ -110,7 +114,6 @@ export class InicioComponent implements OnInit {
     if (this.dniValidator.hasError('required')) {
       return 'Debes introducir un DNI';
     }
-    this.dni = ''
     return this.dniValidator.hasError('pattern') ? 'DNI no válido' : '';
   }
 
@@ -150,10 +153,14 @@ export class InicioComponent implements OnInit {
     if(dni == 8){
       return this.dni;
     }else{
-      this.dni = '';
       return 'DNI no válido';
     }
     
+  }
+
+  seleccionarDificultad(nivel: string){
+    this.opciones = true;
+    this.comunicacionService.crearNivelDificultad(nivel);
   }
 
   crear(){

@@ -19,14 +19,10 @@ export class ComunicacionService {
   mensajeSubjectRecordEdad = new Subject<number>();
   recordAciertosEdad: number = 0;
 
-  private selectedCountry: BehaviorSubject<Pais>;
-  public observableSelectedCountry: Observable<Pais>;
+  mensajeSubjectNivel = new Subject<string>();
+  nivel!: string;
 
-  constructor(private http: HttpClient) {
-    let paisSeleccionado: any = localStorage.getItem('selectedCountry');
-    this.selectedCountry = new BehaviorSubject<Pais>(JSON.parse(paisSeleccionado));
-    this.observableSelectedCountry = this.selectedCountry.asObservable();
-  }
+  constructor(private http: HttpClient) { }
 
   recuperarPaisesYCiudades(): Observable<any>{
     return this.http.get<any>('https://countriesnow.space/api/v0.1/countries')
@@ -50,21 +46,10 @@ export class ComunicacionService {
     }));
   }
 
-  changeSelectedCountry(pais: Pais) {
-    localStorage.setItem("selectedCountry", JSON.stringify(pais));
-    this.selectedCountry.next(pais);
-  }
-
-  consultCountry(): Pais{
-    let paisSeleccionado: any = (localStorage.getItem('selectedCountry'));
-    let pais = JSON.parse(paisSeleccionado);
-    return pais;
-  }
-
-  crearContador(contadorPrecio: number){
-    localStorage.setItem('contadorAciertos', JSON.stringify(contadorPrecio));
-    this.mensajeSubjectAciertos.next(contadorPrecio);
-    this.contadorAciertos = contadorPrecio;
+  crearContador(contadorAciertos: number){
+    localStorage.setItem('contadorAciertos', JSON.stringify(contadorAciertos));
+    this.mensajeSubjectAciertos.next(contadorAciertos);
+    this.contadorAciertos = contadorAciertos;
   }
 
   guardarContador(): number{
@@ -95,5 +80,17 @@ export class ComunicacionService {
     let mensajeLocalStorage: any = localStorage.getItem('recordAciertosEdad');
     this.recordAciertosEdad = mensajeLocalStorage;
     return this.recordAciertosEdad;
+  }
+
+  crearNivelDificultad(nivel: string){
+    localStorage.setItem('nivel', nivel);
+    this.mensajeSubjectNivel.next(nivel);
+    this.nivel = nivel;
+  }
+
+  guardarNivelDificultad(): string{
+    let mensajeLocalStorage: any = localStorage.getItem('nivel');
+    this.nivel = mensajeLocalStorage;
+    return this.nivel;
   }
 }

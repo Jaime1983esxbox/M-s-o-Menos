@@ -22,12 +22,14 @@ export class ComparacionComponent implements OnInit {
   recordAciertosPrecio: number = 0;
   recordAciertosEdad: number = 0;
   tipo!: string;
+  nivel!: string;
+  jugadoresComparacionNiveñ: Jugador[] = [];
 
   constructor(private comunicacionService: ComunicacionService, private route: Router,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-
+    
     this.activatedRoute.queryParams.subscribe(params => {
       this.tipo = params['tipo'];
     })
@@ -92,6 +94,8 @@ export class ComparacionComponent implements OnInit {
       this.recordAciertosEdad = 0;
     }
 
+    this.nivel = this.comunicacionService.guardarNivelDificultad();
+
   }
 
   comparacionJugadoresMas() {
@@ -137,6 +141,7 @@ export class ComparacionComponent implements OnInit {
   volver() {
     localStorage.removeItem('comparadorPrecio');
     localStorage.removeItem('comparadorEdad');
+    localStorage.removeItem('nivel');
     this.route.navigateByUrl('inicio');
   }
 
@@ -170,6 +175,46 @@ export class ComparacionComponent implements OnInit {
       }
     })
     return posiblesJugadoresPrecio;
+  }
+
+  private seleccionarJugadorNivelComparar(jugador1: Jugador) {
+    let posiblesJugadoresNivelPrecio: Jugador[] = [];
+    posiblesJugadoresNivelPrecio = this.jugadores.filter((jugador) => {
+      if(this.nivel == Constants.NIVEL_GALACTICO){
+        if(Math.abs(jugador1.precio - jugador.precio) <= 5){
+          return jugador1.precio != jugador.precio && jugador1.nombre != jugador.nombre;
+        }else{
+          return false;
+        }
+      }else if(this.nivel == Constants.NIVEL_CRACK){
+        if(Math.abs(jugador1.precio - jugador.precio) >= 6 && Math.abs(jugador1.precio - jugador.precio) <= 10){
+          return jugador1.precio != jugador.precio && jugador1.nombre != jugador.nombre;
+        }else{
+          return false;
+        }
+      }else if(this.nivel == Constants.NIVEL_JUGON){
+        if(Math.abs(jugador1.precio - jugador.precio) >= 11 && Math.abs(jugador1.precio - jugador.precio) <= 15){
+          return jugador1.precio != jugador.precio && jugador1.nombre != jugador.nombre;
+        }else{
+          return false;
+        }
+      }else if(this.nivel == Constants.NIVEL_MALO){
+        if(Math.abs(jugador1.precio - jugador.precio) >= 16 && Math.abs(jugador1.precio - jugador.precio) <= 20){
+          return jugador1.precio != jugador.precio && jugador1.nombre != jugador.nombre;
+        }else{
+          return false;
+        }
+      }else if(this.nivel == Constants.NIVEL_PAQUETE){
+        if(Math.abs(jugador1.precio - jugador.precio) >= 21){
+          return jugador1.precio != jugador.precio && jugador1.nombre != jugador.nombre;
+        }else{
+          return false;
+        }
+      }else{
+        return false;
+      }
+    })
+    return posiblesJugadoresNivelPrecio;
   }
 
 }

@@ -1,13 +1,26 @@
 <div class="quiz" *ngIf="tipo == 'inicio'">
     <img class="logo" src="./assets/logo.png">
     <h1>BIENVENIDO AL QUIZ DEL FÚTBOL</h1>
-    <button mat-raised-button color="primary" value="Volver" (click)="volver()">Volver</button>
-    <p>¿Qué prefieres comparar?</p>
-    <button mat-raised-button color="primary" value="Precio" (click)="compararPrecio()">Precio</button>
-    <button mat-raised-button color="primary" value="Edad" (click)="compararEdad()">Edad</button><br>
-    <div class="logos">
-        <img class="dinero" src="./assets/dinero.png">
-        <img class="edad" src="./assets/edad.png">
+    <div class="display">
+        <button mat-raised-button color="primary" value="Volver" (click)="volver()">Volver</button>
+        <p>Nivel de dificultad</p>
+        <select [(ngModel)]="nivel" (change)="seleccionarDificultad(nivel)">
+            <option selected="true" disabled="disabled">Nivel</option>
+            <option value="Galáctico">Galáctico</option>
+            <option value="Crack">Crack</option>
+            <option value="Jugón">Jugón</option>
+            <option value="Malo">Malo</option>
+            <option value="Paquete">Paquete</option>
+        </select>
+    </div>
+    <div *ngIf="opciones">
+        <p>¿Qué quieres comparar?</p>
+        <button mat-raised-button color="primary" value="Precio" (click)="compararPrecio()">Precio</button>
+        <button mat-raised-button color="primary" value="Edad" (click)="compararEdad()">Edad</button><br>
+        <div class="logos">
+            <img class="dinero" src="./assets/dinero.png">
+            <img class="edad" src="./assets/edad.png">
+        </div>
     </div>
 </div>
 

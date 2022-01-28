@@ -1,9 +1,13 @@
 <div class="container" *ngIf="tipo == 'precio'">
     <header>
-        <span class="aciertos">Récord: {{recordAciertosPrecio}}</span>
+        <div class="display">
+            <img src="./assets/medalla.png" alt="">
+            <span class="aciertos">{{recordAciertosPrecio}}</span>
+        </div>
         <button class="inicio" mat-raised-button color="primary" type="submit" (click)="volver()">Inicio</button>
-        <h1>Comparador por Precio</h1>
-        <span class="aciertos"><mat-icon>check_circle</mat-icon> {{contadorAciertos}}</span>
+        <span class="aciertos">Precio</span>
+        <span class="aciertos">Nivel: {{nivel}}</span>
+        <span class="aciertos"><mat-icon>check_circle</mat-icon>{{contadorAciertos}}</span>
     </header>
     <div class="precio">
         <div [(ngModel)]="jugadorSeleccionado1" ngDefaultControl 
@@ -38,7 +42,8 @@
     <header>
         <span class="aciertos">Récord: {{recordAciertosEdad}}</span>
         <button class="inicio" mat-raised-button color="primary" type="submit" (click)="volver()">Inicio</button>
-        <h1>Comparador por Edad</h1>
+        <span class="aciertos">Edad</span>
+        <span class="aciertos">Nivel: {{nivel}}</span>
         <span class="aciertos"><mat-icon>check_circle</mat-icon> {{contadorAciertos}}</span>
     </header>
     <div class="edad">

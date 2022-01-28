@@ -10,6 +10,14 @@
     margin-top: 300px;
 }
 
+.display{
+    display: flex;
+}
+
+.display img{
+    margin-right: 5px;
+}
+
 .inicio{
     margin-top: 0px;
     height: 45px;
